@@ -34,6 +34,29 @@ function checkTypedRX(){
     rxValues.push(rxinf.innerText);
   })
   console.log("rxValues",rxValues);
+  //order of comparisons: patient, medication,quantity,sig,provider,npi,dea
+  const orderOfValues = ["patient","medication","quantity","sig","provider","npi","dea"];
+  const checkObj = {"patient": "pass", 
+                         "medication": "pass", 
+                         "quantity": "pass",
+                         "sig": "pass",
+                         "provider": "pass",
+                         "npi": "pass",
+                         "dea": "pass"}
+  //get pass/fail values
+  for(let val in orderOfValues){
+    /**so we grab the container for the pass/fail values
+     * checkObj contains that results of the checks
+     * 
+     */
+    let checksContainer = document.getElementById("allChecks");
+    checkObj[orderOfValues[val]] = (inputValues[val] == rxValues[val]);
+    let checked = document.createElement('p')
+    checked.innerText = checkObj[orderOfValues[val]];
+
+    checksContainer.appendChild(checked);
+  }
+  
 
 }
 
@@ -50,10 +73,10 @@ function  loadRX(){
   let sig = createSig(drugsList[counter]);
 
   sigRX.innerText = sig;
-  proRX.innerText = `Provider: ${drList[randDR]}`;
-  ptRX.innerText = `Patient: ${ptList[randPT]}`;
-  qRX.innerText = `Quantity: ${getQuantity()}`;
-  mRX.innerText = `Medication: ${drugsList[counter].generic}`;
+  proRX.innerText = `${drList[randDR]}`;
+  ptRX.innerText = `${ptList[randPT]}`;
+  qRX.innerText = `${getQuantity()}`;
+  mRX.innerText = `${drugsList[counter].generic}`;
 }
 loadRX();
 function getAction(card){

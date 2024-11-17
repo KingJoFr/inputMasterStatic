@@ -10,14 +10,8 @@
 <body>
     <center><h1>Input Master v1</h1></center>
     
-    <div class="allChecks">
-    <p>pt check: </p>
-    <p>med check:</p>
-    <p>quantity check: </p>
-    <p>sig check: </p>
-    <p>provider check: </p>
-    <p>npi check:</p>
-    <p>dea check:</p>
+    <div id="allChecks">
+   
     </div>
     <div id="inputAppContainer">
      
@@ -30,7 +24,7 @@
             <label for="patient">Patient
              <div class="autocomplete"> <input  class='inputFit' id="patient" type="text" name="patient" ></div>
             </label> 
-            <p id="ptRX"></p>  <!--this displays the new rx info-->
+            <div class="rxUnit"><span>Patient:</span><p id="ptRX"></p></div>  <!--this displays the new rx info-->
               </div>
         
           <div class="formUnit">
@@ -40,14 +34,14 @@
                 <input class='inputFit' id="meds" type="text" name="inputMed" >
               </div>
             </label>
-            <p id="medRX">Medication: temp </p><br />
+            <div class="rxUnit">Medication: <p id="medRX"></p></div><br />
           </div>
           
           <div class="formUnit">
             <label for="quantity">Quantity:
               <input class='inputFit'id='quantity' name="quantity" type="text">
             </label>
-            <p id ="quantityRX">Quantity: temp</p><br />
+            <p id ="quantityRX"></p><br />
           </div>
 
           <div class="formUnit">
@@ -70,14 +64,14 @@
             <label for="npi">NPI:
               <input class='inputFit'type="text" name="inputNpi" />
             </label>
-            <p>NPI: 10********</p><br />
+            <div class="rxUnit"><span>NPI: </span><p>10********</p></div><br />
           </div>
 
           <div class="formUnit">
             <label for="dea">DEA: 
               <input class="inputFit" type="text" name="inputDea" />
             </label>
-            <p>DEA: TL*******</p><br />
+            <div class="rxUnit"><span>DEA: </span><p>TL*******</p></div><br />
           </div>
          
           <!--<input type="text" name='medChecker' class="checker" value="<%-card.generic %>" />

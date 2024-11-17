@@ -78,7 +78,11 @@ body{
             
     /* all the autocomplete styles */
   
-
+.rxUnit{
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
 .autocomplete {
   /*the container must be positioned relative for the autocomplete to appear below the input box*/
   position: relative;
