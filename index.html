@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./script.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+</head>
+<body>
+    <center><h1>Input Master v1</h1></center>
+    
+    <div class="allChecks">
+    <p>pt check: </p>
+    <p>med check:</p>
+    <p>quantity check: </p>
+    <p>sig check: </p>
+    <p>provider check: </p>
+    <p>npi check:</p>
+    <p>dea check:</p>
+    </div>
+    <div id="inputAppContainer">
+     
+      <div class="formContainer">
+        
+        <form class="theForm" id="theForm">
+
+          <div class="formUnit">
+            
+            <label for="patient">Patient
+             <div class="autocomplete"> <input  class='inputFit' id="patient" type="text" name="patient" ></div>
+            </label> 
+            <p id="ptRX"></p>  <!--this displays the new rx info-->
+              </div>
+        
+          <div class="formUnit">
+            
+            <label for="meds">Medication
+              <div class="autocomplete">
+                <input class='inputFit' id="meds" type="text" name="inputMed" >
+              </div>
+            </label>
+            <p id="medRX">Medication: temp </p><br />
+          </div>
+          
+          <div class="formUnit">
+            <label for="quantity">Quantity:
+              <input class='inputFit'id='quantity' name="quantity" type="text">
+            </label>
+            <p id ="quantityRX">Quantity: temp</p><br />
+          </div>
+
+          <div class="formUnit">
+            <label for="inputSig">Sig
+              <input class="inputFit" name="inputSig" id="inputSig" type="text">
+            </label>
+            <p id="sigRX"></p><br />
+          </div>
+
+          <div class="formUnit">
+            <label for="inputProvider">Provider
+              <div class="autocomplete">
+                <input class='inputFit'id="inputProvider" type="text" name="inputProvider" >
+              </div>
+            </label>
+            <p id="providerRX">Provider: temp</p><br />
+          </div>
+
+          <div class="formUnit">
+            <label for="npi">NPI:
+              <input class='inputFit'type="text" name="inputNpi" />
+            </label>
+            <p>NPI: 10********</p><br />
+          </div>
+
+          <div class="formUnit">
+            <label for="dea">DEA: 
+              <input class="inputFit" type="text" name="inputDea" />
+            </label>
+            <p>DEA: TL*******</p><br />
+          </div>
+         
+          <!--<input type="text" name='medChecker' class="checker" value="<%-card.generic %>" />
+          <input type="text" class="checker" name="nameChecker" value="<%=nameList[providerIndex%2+1]%>" />
+          <input type="number" class="checker" name="medIndex" value="<%#-medIndex%>" />
+          <input type="number" class="checker" name="quantityChecker" value="<%=quantity%>" />
+          <input type="text" class="checker" name="sigChecker" value="<%=sig%>" />
+          <input type="text" class="checker" name="providerChecker" value="<%=nameList[providerIndex]%>" />
+          <input type="number" class="checker" name="providerIndex" value="<%=providerIndex%>" />
+-->
+        </form>
+
+        <div class="submitctn">
+          <!--next button -->
+              <button type="submit" value ="next" class = 'button-48 submitbtn' onclick="incrementDrugsList()" role="button">next</button>
+          <!--reset button -->
+              <button type = 'submit' value="reset" class="button-48 submitbtn" >reset</button>
+          <!--submit button -->
+              <button type="submit" value="Submit" class="button-48 submitbtn"  onclick="checkTypedRX()" id="submit">submit</button>
+            
+            
+          </div><!--theform -->
+         
+      </div><!--formContainer-->
+      
+    </div><!--inputAppContainer-->
+</body>
+</html>
