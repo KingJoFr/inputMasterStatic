@@ -35,7 +35,7 @@ function checkTypedRX(){
   })
   console.log("rxValues",rxValues);
   //order of comparisons: patient, medication,quantity,sig,provider,npi,dea
-  const orderOfValues = ["patient","medication","quantity","sig","provider","npi","dea"];
+  //const orderOfValues = ["patient","medication","quantity","sig","provider","npi","dea"];
   const checkObj = {"patient": "pass", 
                          "medication": "pass", 
                          "quantity": "pass",
@@ -43,16 +43,21 @@ function checkTypedRX(){
                          "provider": "pass",
                          "npi": "pass",
                          "dea": "pass"}
+  const keys = Object.keys(checkObj); //creates array of keys of checkobj;
   //get pass/fail values
-  for(let val in orderOfValues){
+  for(let val in keys){
     /**so we grab the container for the pass/fail values
-     * checkObj contains that results of the checks
-     * 
+     * checkObj contains the results of the checks
+     * we iterate over keys and check the input against the rx
+     * we update pass/fail in checkObj.
+     * we create a p element to print to screen the pass fail values
+     * then append those elements to checksContainer which is at the top of the page
+     * maybe the bottom would be better or maybe even on the side 
      */
     let checksContainer = document.getElementById("allChecks");
-    checkObj[orderOfValues[val]] = (inputValues[val] == rxValues[val]);
+    checkObj[keys[val]] = (inputValues[val] == rxValues[val]);
     let checked = document.createElement('p')
-    checked.innerText = checkObj[orderOfValues[val]];
+    checked.innerText = checkObj[keys[val]];
 
     checksContainer.appendChild(checked);
   }
