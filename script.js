@@ -13,27 +13,33 @@ sessionStorage.getItem("place");
  * to do that their form is used.  Every med has a form such as tablet or spray or ml, and they have a 
  * time period or dosing schedule based on the form. 
  */
-function incrementDrugsList(){
-  let counter = parseInt(sessionStorage.getItem("place"));
-  sessionStorage.setItem("place", counter +1);
-  console.log("counter", counter)
-  loadRX();
-}
 
-function checkTypedRX(){
+
+function checkTypedRX(){ //action of the submit button
+  let checksContainer = document.getElementById("allChecks");
+  let oldElList = document.querySelectorAll('p.addedP');
+  
+  if(oldElList.length>0){
+    oldElList.forEach((result)=>{
+      checksContainer.removeChild(result);
+
+    })
+
+  }
+  
   let inputValues = [];
   const inputs = document.querySelectorAll("#theForm input");
   inputs.forEach(input=>{
     inputValues.push(input.value);
   })
-  console.log("inputValues",inputValues)
+  
 
   const rxInfos = document.querySelectorAll("#theForm p");
   let rxValues = [];
   rxInfos.forEach(rxinf =>{
     rxValues.push(rxinf.innerText);
   })
-  console.log("rxValues",rxValues);
+  
   //order of comparisons: patient, medication,quantity,sig,provider,npi,dea
   //const orderOfValues = ["patient","medication","quantity","sig","provider","npi","dea"];
   const checkObj = {"patient": "pass", 
@@ -54,14 +60,27 @@ function checkTypedRX(){
      * then append those elements to checksContainer which is at the top of the page
      * maybe the bottom would be better or maybe even on the side 
      */
-    let checksContainer = document.getElementById("allChecks");
+   
     checkObj[keys[val]] = (inputValues[val] == rxValues[val]);
     let checked = document.createElement('p')
-    checked.innerText = checkObj[keys[val]];
+    checked.className = "addedP"
+    checked.innerText = `${keys[val]}: ${checkObj[keys[val]]}`;
 
     checksContainer.appendChild(checked);
   }
   
+
+}
+function incrementDrugsList(){ //action of next button
+  let counter = parseInt(sessionStorage.getItem("place"));
+  sessionStorage.setItem("place", counter +1);
+  clearInputs();
+  loadRX();
+}
+
+function clearInputs(){//action of reset button
+  let form = document.getElementById("theForm")
+  theForm.reset();
 
 }
 
@@ -74,7 +93,7 @@ function  loadRX(){
   let ptRX = document.getElementById("ptRX");
   let proRX = document.getElementById("providerRX");
   let sigRX = document.getElementById("sigRX");
-  console.log("drugslist coutner", drugsList[counter])
+  
   let sig = createSig(drugsList[counter]);
 
   sigRX.innerText = sig;
@@ -149,7 +168,7 @@ function getTimePeriod(card){
 }
 
  function createSig(card){
-    console.log("inside createsig",card);
+    
   /**
    * how to create the sig.  Pull the id from req.body._id. get route and form
    * a sig is basically action + quantity + med.form + "by/" + med.route + rate + "time(s) per" + time period
@@ -176,7 +195,7 @@ function getTimePeriod(card){
     const sigString = `${action} ${quantity} ${form} ${route} ${rate} time(s) ${timePeriod}`;
     
       if(action=='temp' || timePeriod =='temp'){
-          console.log('we have temps and card is ', card);
+          
       }
       return sigString;
   }   
@@ -271,7 +290,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         /*create a DIV element that will contain the items (values):*/
         a = document.createElement("DIV");
         a.setAttribute("id", this.id + "autocomplete-list");
-        console.log("What's a: ", a.id)
+        
         a.setAttribute("class", "autocomplete-items");
         /*append the DIV element as a child of the autocomplete container:*/
         this.parentNode.appendChild(a);

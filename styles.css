@@ -135,11 +135,15 @@ body{
   float: right;
 }
 
-.allChecks {
-  display: grid;
+#allChecks {
+ /* display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   margin: auto;
   width: 80%;
+  */
+  display: flex;
+  gap: 5px;
+  justify-content:space-between;
  
 }
 .allChecks p{
