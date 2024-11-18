@@ -1,0 +1,1 @@
+You type in the left inputs what appears in the right.  Once everything is filled out you click submit. At the top will appear whether you typed everything correctly.  You can click next to go to a new prescription.  In the real world how many mistakes you make and how fast you complete prescriptions would be tracked.  I plan to add this functionality later.
